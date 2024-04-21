@@ -6,6 +6,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, r2_score
 import joblib
 
 df = pd.read_csv('housing_df.csv')
@@ -32,3 +33,8 @@ grid_search.fit(X_train, y_train)
 y_predictions = grid_search.predict(X_test)
 # print(y_predictions)
 
+mae = mean_absolute_error(y_test, y_predictions)
+r2 = r2_score(y_test, y_predictions)
+
+print(f"Mean Absolute Error: {mae}")
+print(f"R-squared: {r2}")
