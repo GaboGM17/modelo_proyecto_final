@@ -7,3 +7,9 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LinearRegression
 import joblib
+
+df = pd.read_csv('housing_df.csv')
+
+y = df['MEDV']
+x = df.drop(['MEDV'], axis=1)
+
