@@ -13,3 +13,19 @@ df = pd.read_csv('housing_df.csv')
 y = df['MEDV']
 x = df.drop(['MEDV'], axis=1)
 
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 0.2)
+
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('lin_reg', LinearRegression())
+])
+
+parameters = {
+    'lin_reg__fit_intercept': [True, False],
+    'lin_reg__copy_X': [True, False],
+    'lin_reg__positive': [True, False]
+}
+
+grid_search = GridSearchCV(pipeline, parameters, cv=5)
+grid_search.fit(X_train, y_train)
+
