@@ -29,3 +29,6 @@ parameters = {
 grid_search = GridSearchCV(pipeline, parameters, cv=5)
 grid_search.fit(X_train, y_train)
 
+y_predictions = grid_search.predict(X_test)
+# print(y_predictions)
+
