@@ -10,7 +10,7 @@ import joblib
 from sklearn.model_selection import cross_val_score
 
 # Carga de datos
-df = pd.read_csv('housing_df.csv')
+df = pd.read_csv('../datasets/housing_df.csv')
 y = df['MEDV']
 X = df.drop(['MEDV'], axis=1)
 
