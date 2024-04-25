@@ -9,12 +9,10 @@ from sklearn.metrics import mean_absolute_error, r2_score
 import joblib
 from sklearn.model_selection import cross_val_score
 
-# Carga de datos
 df = pd.read_csv('../datasets/housing_df.csv')
 y = df['MEDV']
 X = df.drop(['MEDV'], axis=1)
 
-# División de los datos
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Definición de modelos y pipelines
@@ -51,7 +49,7 @@ parameters = {
     }
 }
 
-# Ejecución de GridSearchCV con validación cruzada anidada para cada modelo
+# Ejecución de GridSearchCV con validación cruzada
 for name, pipeline in pipelines.items():
     grid_search = GridSearchCV(pipeline, parameters[name], cv=5, n_jobs=-1, verbose=1)
     scores = cross_val_score(grid_search, X_train, y_train, cv=5)
